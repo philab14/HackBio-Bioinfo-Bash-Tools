@@ -1,53 +1,57 @@
-#!/bin/bash
+#!/bin/bash 
 # Bioinformatics Linux Assignment Script
 # Author: Philip Boakye Bonsu
 
 # 1. Print your name
-echo " Philip Boakye Bonsu"
+echo "Philip Boakye Bonsu"
 
-# 2. Create a folder titled your name
+# 2. Print GitHub and LinkedIn profiles
+echo "GitHub: https://github.com/YourUsername"
+echo "LinkedIn: https://www.linkedin.com/in/YourProfile/"
+
+# 3. Create a folder titled your name
 mkdir Phil2B
 
-# 3. Create another directory titled biocomputing and change into it
+# 4. Create another directory titled biocomputing and change into it
 mkdir biocomputing && cd biocomputing
 
-# 4. Download the 3 files
+# 5. Download the 3 files
 wget https://raw.githubusercontent.com/josoga2/dataset-repos/main/wildtype.fna
 wget https://raw.githubusercontent.com/josoga2/dataset-repos/main/wildtype.gbk
 wget https://raw.githubusercontent.com/josoga2/dataset-repos/main/wildtype.gbk
 
-# 5. Move the .fna file to the folder titled your name
+# 6. Move the .fna file to the folder titled your name
 mv wildtype.fna ../Phil2B/
 
-# 6. Delete duplicate gbk file (wget renames it as .1)
+# 7. Delete duplicate gbk file (wget renames it as .1)
 rm -f wildtype.gbk.1
 
-# 7. Confirm if the .fna file is mutant or wild type
+# 8. Confirm if the .fna file is mutant or wild type
 grep "tatatata" ../Phil2B/wildtype.fna
-grep "tata" ../ Phil2B/wildtype.fna
+grep "tata" ../Phil2B/wildtype.fna
 
-# 8. If mutant, print all matching lines into a new file
-grep "tatatata" ../ Phil2B /wildtype.fna > mutant_sequences.txt
+# 9. If mutant, print all matching lines into a new file
+grep "tatatata" ../Phil2B/wildtype.fna > mutant_sequences.txt
 
-# 9. Count number of lines (excluding header) in the .gbk file
-sed -n '/^ORIGIN/,/^V/V/p' wildtype.gbk | grep -v 'ORIGIN' | grep -v "//" | wc -L
+# 10. Count number of lines (excluding header) in the .gbk file
+grep -A1000 ORIGIN wildtype.gbk | grep -v ORIGIN | grep -v "//" | wc -l
 
-# 10. Print the sequence length of the .gbk file
-grep "Locus" wildtype.gbk
+# 11. Print the sequence length of the .gbk file
+grep "LOCUS" wildtype.gbk
 
-# 11. Print the source organism of the .gbk file
+# 12. Print the source organism of the .gbk file
 grep "SOURCE" wildtype.gbk
 
-# 12. List all gene names in the .gbk file
+# 13. List all gene names in the .gbk file
 grep "/gene=" wildtype.gbk
-# 13. Clear your terminal space and print all commands used today
+
+# 14. Clear your terminal space and print all commands used today
 clear
 history
-# 14. List the files in the two folders
-# Files in biocomputing folder
-ls
-# Files in Phil2B folder
-ls ../ Phil2B
+
+# 15. List the files in the two folders
+ls   # biocomputing folder
+ls ../Phil2B
 
 
 
